@@ -19,7 +19,7 @@ jobs:
       # Composerのセットアップと依存関係のインストール
       - uses: php-actions/composer@v6
         with:
-          php_version: '8.4.11'
+          php_version: '8.3'
           args: '--no-progress --prefer-dist'
       # PHPUnitの実行
       - uses: php-actions/phpunit@v3
