@@ -28,16 +28,16 @@ jobs:
       - name: Run Trivy scan
         uses: aquasecurity/trivy-action@master
         with: 
-            image-ref: 'ghcr.io/sato3yu/awesometodo:a7238a89f0166e016d23187b0a91a7dba49f782e'
-            format: 'table'
+            image-ref: 'ghcr.io/securistant/awesometodo:latest'
+            format: 'sarif'
+            exit-code: '1'
             ignore-unfixed: true
             vuln-type: 'os,library'
             severity: 'HIGH,CRITICAL'
-            output: 'trivy-report.txt'
+            output: 'trivy-results.sarif'
 
-      # スキャンレポートをGitHub Actionsのアーティファクトとして保存
+      # Upload to Security Tab on GitHub
       - name: Upload Trivy report
-        uses: actions/upload-artifact@v4
+        uses: github/codeql-action/upload-sarif@v3
         with:
-          name: trivy-scan-report
-          path: trivy-report.txt
+          sarif_file: 'trivy-results.sarif'
