@@ -20,7 +20,8 @@ env:
       method: cookie
     technology: {}
     structure: {}
-  parameters: {}
+    parameters: {}
+    
 jobs:
 - type: passiveScan-config
   parameters: {}
